@@ -2,6 +2,8 @@
 #define LOGICACINEMA_H
 
 #include <string>
+#include <map>
+
 
 using namespace std;
 
@@ -20,6 +22,8 @@ public:
 
     bool crearUsuario(string nombre, string password);
     bool recargarUsuario(string nombre,int valor);
+
+    map<string,int> informeVentas(string dia);
 };
 
 #endif // LOGICACINEMA_H

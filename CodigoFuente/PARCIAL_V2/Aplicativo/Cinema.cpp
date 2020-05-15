@@ -211,7 +211,17 @@ void Cinema::crearUsuario()
 
 void Cinema::informeVentasDelDia()
 {
-
+    limpiarTerminal();
+    cout << "\t\t informe de ventas del dia." << endl;
+    time_t t = time(nullptr);
+    char buf[11];
+    strftime(buf, sizeof(buf), "%Y-%m-%d", localtime(&t));
+    string fecha(buf);
+    map<string,int> ventas = logica.informeVentas(fecha);
+    cout << "fecha: " << fecha << endl;
+    for(auto it = ventas.begin(); it != ventas.end(); it++){
+        cout << "\t " << it->first << ": \t$" << it->second << endl;
+    }
 }
 
 void Cinema::cambiarFuncion()

@@ -28,13 +28,17 @@ bool LogicaCinema::esAdmin(string nombre)
     return nombre == ADMIN;
 }
 
-bool LogicaCinema::validarAciento(char fila, int silla)
+bool LogicaCinema::validarAciento(int funcion, char fila, int silla)
 {
     return true;
 }
 
-bool LogicaCinema::comprarAsiento(char fila, int silla)
+bool LogicaCinema::comprarAsiento(int funcion,char fila, int silla)
 {
+    SalaDTO sala = consultarSala(funcion);
+    map<char, array<bool, 20> > acientos = sala.getAcientos();
+    acientos[fila][silla]=false;
+    bd.cambiarEstadoSala(acientos,funcion);
     return true;
 }
 
@@ -86,5 +90,6 @@ SalaDTO LogicaCinema::consultarSala(int funcion)
 {
     SalaDTO sala;
     sala.setIdFuncion(funcion);
+    sala.setAcientos(bd.consultarEstadoSalaDeCine(funcion));
     return sala;
 }

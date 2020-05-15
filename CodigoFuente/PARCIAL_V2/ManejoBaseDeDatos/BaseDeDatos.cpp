@@ -60,14 +60,33 @@ int BaseDeDatos::saldoUsuario(string nombre)
     return saldoInt;
 }
 
-map<char, pair<int, bool> > BaseDeDatos::consultarEstadoSalaDeCine(int sala)
+map<char, array<bool, 20> > BaseDeDatos::consultarEstadoSalaDeCine(int sala)
 {
-    map<char, pair<int, bool> > estadoActual;
-
+    map<char,array<bool,20>> estadoActual;
+    string nombreArchivo = "bd/SalaF" + to_string(sala) +  ".txt";
+    string contenido = obtenerContenido(nombreArchivo);
+    int n = contenido.length();
+    // declaring character array
+    char char_array[n + 1];
+    // copying the contents of the
+    // string to char array
+    strcpy(char_array, contenido.c_str());
+    char key;
+    int count = 0;
+    array<bool,20> sillas;
+    for(int i=0; i<8; i++){
+        key = 'A'+i;
+        for(int j=0; j<20; j++){
+            sillas.fill(true);
+            sillas.at(j) = char_array[count+j] == '+';
+        }
+        estadoActual.insert(pair<char, array<bool, 20> >(key,sillas));
+        count +=20;
+    }
     return estadoActual;
 }
 
-void BaseDeDatos::cambiarEstadoSala(map<char, pair<int, bool> > nuevoEstado)
+void BaseDeDatos::cambiarEstadoSala(map<char, array<bool, 20> > nuevoEstado,int sala)
 {
 
 }

@@ -3,6 +3,7 @@
 
 #include "Codificador.h"
 #include "ManejoArchivos.h"
+#include <cstring>
 #include <string>
 #include <map>
 #include <list>
@@ -35,8 +36,8 @@ public:
      *
      *************************************************************/
 
-    map<char,pair<int,bool>> consultarEstadoSalaDeCine(int sala);
-    void cambiarEstadoSala(map<char,pair<int,bool>> nuevoEstado);
+    map<char,array<bool,20>> consultarEstadoSalaDeCine(int sala);
+    void cambiarEstadoSala(map<char,array<bool,20>> nuevoEstado,int sala);
 
     /**************************************************************
      *

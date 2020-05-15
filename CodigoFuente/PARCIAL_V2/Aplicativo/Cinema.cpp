@@ -148,13 +148,13 @@ void Cinema::ventaBoleta(string nombre)
             repetir = false;
         }
     }
-    if(!logica.validarAciento(fila,silla)){
+    if(!logica.validarAciento(funcion,fila,silla)){
         cout << "Error! El aciento seleccionado no es valido." << endl;
         cout << "Compra cancelada. Ingrese cualquier caracter y enter para continuar" << endl;
         cin >> basura;
         return;
     }
-    if(!logica.comprarAsiento(fila,silla)){
+    if(!logica.comprarAsiento(funcion,fila,silla)){
         cout << "Error! No cuenta con suficiente dinero." << endl;
         cout << "Compra cancelada. Ingrese cualquier caracter y enter para continuar" << endl;
         cin >> basura;

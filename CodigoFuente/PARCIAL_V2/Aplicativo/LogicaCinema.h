@@ -36,18 +36,20 @@ public:
     /**
      * @brief validarAciento - metodo que valida si un asiento esta
      * disponible.
+     * @param funcion - funcion a la que se compra.
      * @param fila - fila del asiento.
      * @param silla - numero de silla del asiento.
      * @return true si el asiento esta disponible, false en caso contrario
      */
-    bool validarAciento(char fila, int  silla);
+    bool validarAciento(int funcion, char fila, int  silla);
     /**
      * @brief comprarAsiento - metodo para comprar un asciento,
+     * @param funcion - funcion a la que se compra.
      * @param fila - fila del asiento.
      * @param silla - numero de silla del asient
      * @return true si la compra fue exitosa, false encaso cotntrario.
      */
-    bool comprarAsiento(char fila, int  silla);
+    bool comprarAsiento(int funcion, char fila, int  silla);
 
     /**
      * @brief crearUsuario -metodo de creacion de usuarios.

@@ -28,6 +28,16 @@ void SalaDTO::setAcientos(const map<char, array<bool, 20> > &value)
     acientos = value;
 }
 
+int SalaDTO::getIdFuncion() const
+{
+    return idFuncion;
+}
+
+void SalaDTO::setIdFuncion(int value)
+{
+    idFuncion = value;
+}
+
 void SalaDTO::inicializarAcientos(){
     acientos.clear();
     for(char i=0; i < 8 ; i++){

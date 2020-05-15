@@ -16,7 +16,11 @@ public:
     map<char, array<bool, 20> > getAcientos() const;
     void setAcientos(const map<char, array<bool, 20> > &value);
 
+    int getIdFuncion() const;
+    void setIdFuncion(int value);
+
 private:
+    int idFuncion;
     int acientosTotales;
     int acientosLibres;
     map<char,array<bool,20>> acientos;

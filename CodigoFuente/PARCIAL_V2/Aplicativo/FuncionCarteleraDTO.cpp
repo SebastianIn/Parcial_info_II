@@ -35,12 +35,12 @@ void FuncionCarteleraDTO::setHora(const string &value)
     hora = value;
 }
 
-SalaDTO FuncionCarteleraDTO::getSala() const
+string FuncionCarteleraDTO::getIdSala() const
 {
-    return sala;
+    return idSala;
 }
 
-void FuncionCarteleraDTO::setSala(const SalaDTO &value)
+void FuncionCarteleraDTO::setIdSala(const string &value)
 {
-    sala = value;
+    idSala = value;
 }

@@ -21,14 +21,14 @@ public:
     string getHora() const;
     void setHora(const string &value);
 
-    SalaDTO getSala() const;
-    void setSala(const SalaDTO &value);
+    string getIdSala() const;
+    void setIdSala(const string &value);
 
 private:
     int id;
     string nombrePelicula;
     string hora;
-    SalaDTO sala;
+    string idSala;
 };
 
 #endif // FUNCIONCARTELERADTO_H

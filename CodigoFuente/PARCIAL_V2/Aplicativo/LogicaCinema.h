@@ -24,6 +24,8 @@ public:
      * @return true si esta autorizado, false en caso contrario
      */
     bool autenticarse(string nombre, string clave);
+
+    int consultarSaldo(string nombre);
     /**
      * @brief esAdmin - Metodo que indica si un usuario es administrador.
      * @param nombre - nombre de usuario

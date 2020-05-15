@@ -8,6 +8,7 @@
 #include <list>
 #include <vector>
 #include <array>
+#include <sstream>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
     bool AutenticarAdmin(string clave);
     bool crearUsuario(string nombre, string clave);
     bool cargarUsuario(string nombre, int valor);
+    int saldoUsuario(string nombre);
 
     /**************************************************************
      *
@@ -82,6 +84,7 @@ private:
     ManejoArchivos* archivos;
 
     string obtenerContenido(string nombreArchivo);
+    bool guardarDatos(string archivoDestino, string contenido);
 };
 
 #endif // BASEDEDATOS_H

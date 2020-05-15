@@ -110,6 +110,8 @@ void Cinema::ventaBoleta(string nombre)
     int  silla = 0;
     cout << "\t\tBienvenido " << nombre << endl;
     cout << endl;
+    cout << "\t\tSu saldo es de: " << logica.consultarSaldo(nombre);
+    cout << endl;
     verCartelera();
     cout << "Nota: si se ingresa un id desconocido se aborta la compra." << endl;
     cout << "Ingrese Id de funcion: ";
@@ -175,7 +177,9 @@ void Cinema::cargarSaldo()
     cin >> nombre;
     cout << "Ingrese monto a recargar: ";
     cin >> valor;
-    ok = logica.recargarUsuario(nombre,valor);
+    int valorAnterior = logica.consultarSaldo(nombre);
+    int nuevoSaldo = valor + valorAnterior;
+    ok = logica.recargarUsuario(nombre,nuevoSaldo);
     if(ok){
         cout << "Recarga a " << nombre << " por valor de $" << valor << " Fue exitosa!" << endl;
     }else{

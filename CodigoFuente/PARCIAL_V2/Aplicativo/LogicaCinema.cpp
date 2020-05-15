@@ -14,6 +14,15 @@ bool LogicaCinema::autenticarse(string nombre, string clave)
     return bd.AutenticarUsuario(nombre,clave);
 }
 
+int LogicaCinema::consultarSaldo(string nombre)
+{
+    bool admin = esAdmin(nombre);
+    if(admin){
+        return 99999;
+    }
+    return bd.saldoUsuario(nombre);
+}
+
 bool LogicaCinema::esAdmin(string nombre)
 {
     return nombre == ADMIN;

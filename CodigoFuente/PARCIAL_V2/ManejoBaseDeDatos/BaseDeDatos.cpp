@@ -14,7 +14,7 @@ BaseDeDatos::~BaseDeDatos()
 
 bool BaseDeDatos::AutenticarUsuario(string nombre, string clave)
 {
-    string nombreArchivo = nombre +".txt";
+    string nombreArchivo = "bd/" + nombre +".txt";
     string contenido = obtenerContenido(nombreArchivo);
     size_t separador = contenido.find('@');
     string claveCod = contenido.substr(0,separador);
@@ -30,12 +30,34 @@ bool BaseDeDatos::AutenticarAdmin(string clave)
 
 bool BaseDeDatos::crearUsuario(string nombre, string clave)
 {
-    return true;
+    string nombreArchivo = "bd/" + nombre +  ".txt";
+    string aIngresar = clave + "@" + "0";
+    return guardarDatos(nombreArchivo,aIngresar);
 }
+
+
 
 bool BaseDeDatos::cargarUsuario(string nombre, int valor)
 {
-    return true;
+    string nombreArchivo = "bd/" + nombre +  ".txt";
+    string contenido = obtenerContenido(nombreArchivo);
+    size_t separador = contenido.find('@');
+    string claveCod = contenido.substr(0,separador);
+    string nuevoSaldo = to_string(valor);
+    string aIngresar = claveCod + "@" + nuevoSaldo;
+    return guardarDatos(nombreArchivo,aIngresar);
+}
+
+int BaseDeDatos::saldoUsuario(string nombre)
+{
+    string nombreArchivo = "bd/" + nombre +  ".txt";
+    string contenido = obtenerContenido(nombreArchivo);
+    size_t separador = contenido.find('@');
+    string saldo = contenido.substr(separador+1);
+    stringstream geek(saldo);
+    int saldoInt;
+    geek >> saldoInt;
+    return saldoInt;
 }
 
 map<char, pair<int, bool> > BaseDeDatos::consultarEstadoSalaDeCine(int sala)
@@ -119,6 +141,13 @@ string BaseDeDatos::obtenerContenido(string nombreArchivo)
     archivos->leerArchivo(nombreArchivo,&contenidoOriginal);
     contenidoDecodificado = codificador->decodificar(contenidoOriginal);
     return contenidoDecodificado;
+}
+
+bool BaseDeDatos::guardarDatos(string archivoDestino, string contenido)
+{
+    string contenidoCodificado = codificador->codificar(contenido);
+    archivos->escribirArchivo(archivoDestino,contenidoCodificado);
+    return true;
 }
 
 

@@ -15,12 +15,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        Aplicativo/Cinema.cpp \
         ManejoBaseDeDatos/BaseDeDatos.cpp \
         ManejoBaseDeDatos/Codificador.cpp \
         ManejoBaseDeDatos/ManejoArchivos.cpp \
         main.cpp
 
 HEADERS += \ \
+    Aplicativo/Cinema.h \
     ManejoBaseDeDatos/BaseDeDatos.h \
     ManejoBaseDeDatos/Codificador.h \
     ManejoBaseDeDatos/ManejoArchivos.h

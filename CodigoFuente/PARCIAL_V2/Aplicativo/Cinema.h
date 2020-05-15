@@ -2,7 +2,9 @@
 #define CINEMA_H
 
 #include "LogicaCinema.h"
-
+#include "Aplicativo/FuncionCarteleraDTO.h"
+#include <map>
+#include <list>
 #include <iostream>
 #include <string>
 #include <time.h>
@@ -32,6 +34,7 @@ private:
     void verSalaParaFuncion(int idFuncion);
 
     void limpiarTerminal();
+    void ingresarBloque(string contenido, int longitud);
 };
 
 #endif // CINEMA_H

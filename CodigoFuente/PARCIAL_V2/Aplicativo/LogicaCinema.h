@@ -1,8 +1,10 @@
 #ifndef LOGICACINEMA_H
 #define LOGICACINEMA_H
 
+#include "Aplicativo/FuncionCarteleraDTO.h"
 #include <string>
 #include <map>
+#include <list>
 
 
 using namespace std;
@@ -25,6 +27,10 @@ public:
 
     map<string,int> informeVentas(string dia);
     void modificarCartelera(int id, string nombrePelicula, string sala_hora, string duracion);
+
+    list<FuncionCarteleraDTO> solictarCartelera();
+
+
 };
 
 #endif // LOGICACINEMA_H

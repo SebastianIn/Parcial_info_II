@@ -258,7 +258,24 @@ void Cinema::cambiarFuncion()
 
 void Cinema::verCartelera()
 {
-    cout << "ver Cartelera" << endl;
+    cout << endl;
+    cout << "\t\t Cartelera." << endl;
+    cout << endl;
+    list<FuncionCarteleraDTO> cartelera = logica.solictarCartelera();
+    cout << "funcion";
+    cout << "\t";
+    ingresarBloque("pelicula",20);
+    cout << "\t" << "hora";
+    cout << "\t" << "sala";
+    cout << endl;
+    for(auto it=cartelera.begin(); it != cartelera.end();it++){
+        cout << it->getId();
+        cout << "\t";
+        ingresarBloque(it->getNombrePelicula(),20);
+        cout << "\t" << it->getHora();
+        cout << "\t" << it->getIdSala();
+        cout << endl;
+    }
 }
 
 void Cinema::verSalaParaFuncion(int idFuncion)
@@ -269,6 +286,25 @@ void Cinema::verSalaParaFuncion(int idFuncion)
 void Cinema::limpiarTerminal()
 {
     cout << string( 100, '\n' );
+}
+
+void Cinema::ingresarBloque(string contenido, int longitud)
+{
+    int tamReal = contenido.size();
+    string contenidoAjustado;
+    if(tamReal == longitud){
+       contenidoAjustado = contenido;
+    }else if(tamReal > longitud){
+        contenidoAjustado = contenido.substr(0,longitud);
+    }else{
+        int count = longitud - tamReal;
+        contenidoAjustado = contenido;
+        while (count > 0) {
+            contenidoAjustado += ' ';
+            count--;
+        }
+    }
+    cout << contenidoAjustado;
 }
 
 

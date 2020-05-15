@@ -54,3 +54,17 @@ void LogicaCinema::modificarCartelera(int id, string nombrePelicula, string sala
 {
 
 }
+
+list<FuncionCarteleraDTO> LogicaCinema::solictarCartelera()
+{
+    list<FuncionCarteleraDTO> cartelera;
+    for(int i=0; i<8;i++){
+        FuncionCarteleraDTO funcion;
+        funcion.setId(i);
+        funcion.setHora("4pm");
+        funcion.setIdSala(to_string(i));
+        funcion.setNombrePelicula("prueba");
+        cartelera.push_back(funcion);
+    }
+    return cartelera;
+}

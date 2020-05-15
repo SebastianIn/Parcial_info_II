@@ -73,7 +73,7 @@ list<FuncionCarteleraDTO> LogicaCinema::solictarCartelera()
     list<FuncionCarteleraDTO> cartelera;
     for(int i=0; i<8;i++){
         FuncionCarteleraDTO funcion;
-        funcion.setId(i);
+        funcion.setId(i+1);
         funcion.setHora("4pm");
         funcion.setIdSala(to_string(i));
         funcion.setNombrePelicula("prueba");

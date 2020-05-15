@@ -21,7 +21,7 @@ private:
     LogicaCinema logica;
 
     void rutinaUsuario(string nombre);
-    void menuAdmin();
+    void menuAdmin(string nombre);
     void login();
     void ventaBoleta();
     void cargarSaldo();

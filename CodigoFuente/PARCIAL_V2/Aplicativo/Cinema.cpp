@@ -34,11 +34,43 @@ void Cinema::cicloAplicacion()
     }
 }
 
-void Cinema::menuAdmin()
+void Cinema::menuAdmin(string nombre)
 {
+    int opcion = 0;
+    char basura;
     limpiarTerminal();
     cout << "Bienvenido Administrador" << endl;
-    cout << "\t Menu de Admin " << endl;
+    cout << "\t\t Menu de Admin " << endl << endl;
+    cout << "Seleccione una de las siguientes opciones: " << endl;
+    cout << "\t 1 - Crear Usuario." << endl;
+    cout << "\t 2 - Cargar Saldo Usuario." << endl;
+    cout << "\t 3 - Generar Reporte de Venta del dia." << endl;
+    cout << "\t 4 - Modificar Cartelera." << endl;
+    cout << "\t 5 - Vender Boleta." << endl;
+    cout << "Ingrese su eleccion: ";
+    cin >> opcion;
+    switch (opcion) {
+    case 1:
+        crearUsuario();
+        break;
+    case 2:
+        cargarSaldo();
+        break;
+    case 3:
+        informeVentasDelDia();
+        break;
+    case 4:
+        cambiarFuncion();
+        break;
+    case 5:
+        rutinaUsuario(nombre);
+        break;
+    default:
+        cout << "Error! Opcion "<< opcion <<" no es una opcion valida." << endl;
+        break;
+    }
+    cout << "Ingrese cualquier caracter y enter para continuar." << endl;
+    cin >> basura;
 }
 
 void Cinema::rutinaUsuario(string nombre)
@@ -56,7 +88,7 @@ void Cinema::rutinaUsuario(string nombre)
     cout << "Ingrese Id de funcion: ";
     cin >> funcion;
     if(funcion > 8 or funcion < 1){
-        cout << "Error!! funcion desconocida. ingrese cualquier valor para seguir." << endl;
+        cout << "Error!! funcion desconocida. ingrese cualquier caracter para seguir." << endl;
         cin >> basura;
         return;
     }
@@ -107,7 +139,8 @@ void Cinema::rutinaUsuario(string nombre)
 
 void Cinema::login()
 {
-    cout << endl;
+    limpiarTerminal();
+    cout << "\t\t\t Login " << endl << endl;
     string nombre;
     string clave;
     bool admin;
@@ -124,7 +157,7 @@ void Cinema::login()
     limpiarTerminal();
     admin = logica.esAdmin(nombre);
     if(admin){
-        menuAdmin();
+        menuAdmin(nombre);
     }else{
         rutinaUsuario(nombre);
     }

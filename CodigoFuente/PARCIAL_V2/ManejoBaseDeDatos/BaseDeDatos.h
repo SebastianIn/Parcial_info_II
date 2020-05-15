@@ -24,7 +24,8 @@ public:
 
     bool AutenticarUsuario(string nombre, string clave);
     bool AutenticarAdmin(string clave);
-    void cambiarClave(string nombre, string nuevaClave);
+    bool crearUsuario(string nombre, string clave);
+    bool cargarUsuario(string nombre, int valor);
 
     /**************************************************************
      *
@@ -79,6 +80,8 @@ public:
 private:
     Codificador* codificador;
     ManejoArchivos* archivos;
+
+    string obtenerContenido(string nombreArchivo);
 };
 
 #endif // BASEDEDATOS_H

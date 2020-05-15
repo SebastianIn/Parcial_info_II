@@ -2,6 +2,7 @@
 #define LOGICACINEMA_H
 
 #include "Aplicativo/FuncionCarteleraDTO.h"
+#include "ManejoBaseDeDatos/BaseDeDatos.h"
 #include <string>
 #include <map>
 #include <list>
@@ -84,8 +85,15 @@ public:
      */
     list<FuncionCarteleraDTO> solictarCartelera();
 
+    /**
+     * @brief consultarSala Metodo para consultar una sala.
+     * @param funcion - id de la funcion.
+     * @return SalaDTO con la info del estado de la sala.
+     */
     SalaDTO consultarSala(int funcion);
 
+private:
+    BaseDeDatos bd;
 
 };
 

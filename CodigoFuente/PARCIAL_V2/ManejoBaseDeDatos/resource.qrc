@@ -1,5 +1,6 @@
 <RCC>
-    <qresource prefix="/database">
-        <file>admin</file>
+    <qresource prefix="/database"/>
+    <qresource prefix="/">
+        <file>../database/admin.txt</file>
     </qresource>
 </RCC>

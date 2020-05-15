@@ -7,7 +7,11 @@ LogicaCinema::LogicaCinema()
 
 bool LogicaCinema::autenticarse(string nombre, string clave)
 {
-    return true;
+    bool admin = esAdmin(nombre);
+    if(admin){
+        return bd.AutenticarAdmin(clave);
+    }
+    return bd.AutenticarUsuario(nombre,clave);
 }
 
 bool LogicaCinema::esAdmin(string nombre)
@@ -27,12 +31,12 @@ bool LogicaCinema::comprarAsiento(char fila, int silla)
 
 bool LogicaCinema::crearUsuario(string nombre, string password)
 {
-    return true;
+    return bd.crearUsuario(nombre,password);
 }
 
 bool LogicaCinema::recargarUsuario(string nombre, int valor)
 {
-    return true;
+    return bd.cargarUsuario(nombre,valor);
 }
 
 map<string, int> LogicaCinema::informeVentas(string dia)

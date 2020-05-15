@@ -14,19 +14,28 @@ BaseDeDatos::~BaseDeDatos()
 
 bool BaseDeDatos::AutenticarUsuario(string nombre, string clave)
 {
-
-    return true;
+    string nombreArchivo = nombre +".txt";
+    string contenido = obtenerContenido(nombreArchivo);
+    size_t separador = contenido.find('@');
+    string claveCod = contenido.substr(0,separador);
+    return clave == claveCod;
 }
 
 bool BaseDeDatos::AutenticarAdmin(string clave)
 {
+    string admin = "bd/admin.txt";
+    string claveLeida = obtenerContenido(admin);
+    return claveLeida == clave;
+}
 
+bool BaseDeDatos::crearUsuario(string nombre, string clave)
+{
     return true;
 }
 
-void BaseDeDatos::cambiarClave(string nombre, string nuevaClave)
+bool BaseDeDatos::cargarUsuario(string nombre, int valor)
 {
-
+    return true;
 }
 
 map<char, pair<int, bool> > BaseDeDatos::consultarEstadoSalaDeCine(int sala)
@@ -101,6 +110,15 @@ void BaseDeDatos::eliminarTipoPrecio(string idTipo)
 void BaseDeDatos::modificarPrecio(string idTipo, string valor)
 {
 
+}
+
+string BaseDeDatos::obtenerContenido(string nombreArchivo)
+{
+    string contenidoOriginal = "";
+    string contenidoDecodificado = "";
+    archivos->leerArchivo(nombreArchivo,&contenidoOriginal);
+    contenidoDecodificado = codificador->decodificar(contenidoOriginal);
+    return contenidoDecodificado;
 }
 
 

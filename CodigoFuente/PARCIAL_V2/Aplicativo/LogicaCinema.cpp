@@ -49,3 +49,8 @@ map<string, int> LogicaCinema::informeVentas(string dia)
     ventas.insert(pair<string, int>("Total",4500000));
     return ventas;
 }
+
+void LogicaCinema::modificarCartelera(int id, string nombrePelicula, string sala_hora, string duracion)
+{
+
+}

@@ -24,6 +24,7 @@ public:
     bool recargarUsuario(string nombre,int valor);
 
     map<string,int> informeVentas(string dia);
+    void modificarCartelera(int id, string nombrePelicula, string sala_hora, string duracion);
 };
 
 #endif // LOGICACINEMA_H

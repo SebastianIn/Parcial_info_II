@@ -226,7 +226,34 @@ void Cinema::informeVentasDelDia()
 
 void Cinema::cambiarFuncion()
 {
-
+    int funcion;
+    string nombrePelicula;
+    string sala_hora;
+    string sala;
+    string hora;
+    string duracion;
+    limpiarTerminal();
+    cout << "\t\t Edicion de Cartelera." << endl;
+    verCartelera();
+    cout << "Ingrese Id de funcion: ";
+    cin >> funcion;
+    if(funcion > 8 or funcion < 1){
+        cout << "Error!! funcion desconocida." << endl;
+        return;
+    }
+    cout << endl << "\t\t Solicitando nuevos parametros. " << endl;
+    cout << "Ingrese nombrePelicula: ";
+    cin >> nombrePelicula;
+    cout << "Ingrese sala: ";
+    cin >> sala;
+    cout << "Ingrese hora: ";
+    cin >> hora;
+    cout << "Ingrese duracion: ";
+    cin >> duracion;
+    sala_hora = sala + "-" + hora;
+    logica.modificarCartelera(funcion,nombrePelicula,sala_hora,duracion);
+    cout << "Cambio Exitoso!!";
+    verCartelera();
 }
 
 void Cinema::verCartelera()

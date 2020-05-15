@@ -14,7 +14,7 @@ void Cinema::cicloAplicacion()
         if(borrar){
             limpiarTerminal();
         }
-        cout << "Ingrese 1 para login o 2 para cerrar: ";
+        cout << "Ingrese 1 para login, 2 para crear Usuario o 3 para cerrar: ";
         cin >> opcion;
         switch (opcion) {
         case 1:
@@ -22,6 +22,10 @@ void Cinema::cicloAplicacion()
             borrar = true;
             break;
         case 2:
+            crearUsuario();
+            borrar = true;
+            break;
+        case 3:
             correr = false;
             borrar = true;
             break;
@@ -30,8 +34,8 @@ void Cinema::cicloAplicacion()
             borrar = false;
             break;
         }
-
     }
+    cout << "Exit" << endl;
 }
 
 void Cinema::menuAdmin(string nombre)
@@ -42,28 +46,24 @@ void Cinema::menuAdmin(string nombre)
     cout << "Bienvenido Administrador" << endl;
     cout << "\t\t Menu de Admin " << endl << endl;
     cout << "Seleccione una de las siguientes opciones: " << endl;
-    cout << "\t 1 - Crear Usuario." << endl;
-    cout << "\t 2 - Cargar Saldo Usuario." << endl;
-    cout << "\t 3 - Generar Reporte de Venta del dia." << endl;
-    cout << "\t 4 - Modificar Cartelera." << endl;
-    cout << "\t 5 - Vender Boleta." << endl;
+    cout << "\t 1 - Cargar Saldo Usuario." << endl;
+    cout << "\t 2 - Generar Reporte de Venta del dia." << endl;
+    cout << "\t 3 - Modificar Cartelera." << endl;
+    cout << "\t 4 - Vender Boleta." << endl;
     cout << "Ingrese su eleccion: ";
     cin >> opcion;
     switch (opcion) {
     case 1:
-        crearUsuario();
-        break;
-    case 2:
         cargarSaldo();
         break;
-    case 3:
+    case 2:
         informeVentasDelDia();
         break;
-    case 4:
+    case 3:
         cambiarFuncion();
         break;
-    case 5:
-        rutinaUsuario(nombre);
+    case 4:
+        ventaBoleta(nombre);
         break;
     default:
         cout << "Error! Opcion "<< opcion <<" no es una opcion valida." << endl;
@@ -73,7 +73,34 @@ void Cinema::menuAdmin(string nombre)
     cin >> basura;
 }
 
-void Cinema::rutinaUsuario(string nombre)
+void Cinema::login()
+{
+    limpiarTerminal();
+    cout << "\t\t\t Login " << endl << endl;
+    string nombre;
+    string clave;
+    bool admin;
+    char basura;
+    cout << "Ingrese nombre de usuario: ";
+    cin >> nombre;
+    cout << "Ingrese clave de acceso: ";
+    cin >> clave;
+    if(!logica.autenticarse(nombre,clave)){
+        cout << "Error!! Usuario o clave incorrecta. oprima enter para seguir.";
+        cin >> basura;
+        return;
+    }
+    limpiarTerminal();
+    admin = logica.esAdmin(nombre);
+    if(admin){
+        menuAdmin(nombre);
+    }else{
+        ventaBoleta(nombre);
+    }
+
+}
+
+void Cinema::ventaBoleta(string nombre)
 {
     limpiarTerminal();
     char basura;
@@ -137,46 +164,49 @@ void Cinema::rutinaUsuario(string nombre)
     cin >> basura;
 }
 
-void Cinema::login()
-{
-    limpiarTerminal();
-    cout << "\t\t\t Login " << endl << endl;
-    string nombre;
-    string clave;
-    bool admin;
-    char basura;
-    cout << "Ingrese nombre de usuario: ";
-    cin >> nombre;
-    cout << "Ingrese clave de acceso: ";
-    cin >> clave;
-    if(!logica.autenticarse(nombre,clave)){
-        cout << "Error!! Usuario o clave incorrecta. oprima enter para seguir.";
-        cin >> basura;
-        return;
-    }
-    limpiarTerminal();
-    admin = logica.esAdmin(nombre);
-    if(admin){
-        menuAdmin(nombre);
-    }else{
-        rutinaUsuario(nombre);
-    }
-
-}
-
-void Cinema::ventaBoleta()
-{
-
-}
-
 void Cinema::cargarSaldo()
 {
-
+    limpiarTerminal();
+    string nombre;
+    int valor;
+    bool ok;
+    cout << "\t\t Cargar Saldo A Usuarios" << endl;
+    cout << "Ingrese cedula usaurio a recargar: ";
+    cin >> nombre;
+    cout << "Ingrese monto a recargar: ";
+    cin >> valor;
+    ok = logica.recargarUsuario(nombre,valor);
+    if(ok){
+        cout << "Recarga a " << nombre << " por valor de $" << valor << " Fue exitosa!" << endl;
+    }else{
+        cout << "Error! Recarga Fallida. " << endl;
+    }
 }
 
 void Cinema::crearUsuario()
 {
-
+    limpiarTerminal();
+    string nombre;
+    string password;
+    char basura;
+    bool ok;
+    cout << "\t\t Creacion de Usuarios" << endl;
+    cout << endl << "Nota:"<< endl;
+    cout << "Recuerde que la cedula sera su nombre de usuario." << endl;
+    cout << "No ingrese espacios en blanco ni signos de puntuacion." << endl;
+    cout << endl << endl;
+    cout << "Ingrese cedula usaurio: ";
+    cin >> nombre;
+    cout << "Ingrese el nuevo password: ";
+    cin >> password;
+    ok = logica.crearUsuario(nombre,password);
+    if(ok){
+        cout << "Usuario " << nombre << " creado exitosamente!" << endl;
+    }else{
+        cout << "Error! Falla Al Crear Usuario. " << endl;
+    }
+    cout << "Ingrese cualquier caracter y enter para continuar." << endl;
+    cin >> basura;
 }
 
 void Cinema::informeVentasDelDia()

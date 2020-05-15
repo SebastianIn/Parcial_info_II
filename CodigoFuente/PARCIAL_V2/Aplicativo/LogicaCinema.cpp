@@ -24,3 +24,13 @@ bool LogicaCinema::comprarAsiento(char fila, int silla)
 {
     return true;
 }
+
+bool LogicaCinema::crearUsuario(string nombre, string password)
+{
+    return true;
+}
+
+bool LogicaCinema::recargarUsuario(string nombre, int valor)
+{
+    return true;
+}

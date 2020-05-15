@@ -20,10 +20,9 @@ public:
 private:
     LogicaCinema logica;
 
-    void rutinaUsuario(string nombre);
     void menuAdmin(string nombre);
     void login();
-    void ventaBoleta();
+    void ventaBoleta(string nombre);
     void cargarSaldo();
     void crearUsuario();
     void informeVentasDelDia();

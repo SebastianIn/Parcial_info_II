@@ -17,6 +17,9 @@ public:
 
     bool validarAciento(char fila, int  silla);
     bool comprarAsiento(char fila, int  silla);
+
+    bool crearUsuario(string nombre, string password);
+    bool recargarUsuario(string nombre,int valor);
 };
 
 #endif // LOGICACINEMA_H

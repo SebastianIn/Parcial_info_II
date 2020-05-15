@@ -13,7 +13,15 @@ public:
     int getAcientosTotales() const;
     int getAcientosLibres() const;
 
+    /**
+     * @brief getAcientos obtinen el mapa de la sala
+     * @return mapa <fila, array<libre,silla>>
+     */
     map<char, array<bool, 20> > getAcientos() const;
+    /**
+     * @brief setAcientos llena el mapa de la sala.
+     * @param value - mapa <fila, array<libre,silla>>
+     */
     void setAcientos(const map<char, array<bool, 20> > &value);
 
     int getIdFuncion() const;

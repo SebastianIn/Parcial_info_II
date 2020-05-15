@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         Aplicativo/Cinema.cpp \
+        Aplicativo/LogicaCinema.cpp \
         ManejoBaseDeDatos/BaseDeDatos.cpp \
         ManejoBaseDeDatos/Codificador.cpp \
         ManejoBaseDeDatos/ManejoArchivos.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 
 HEADERS += \ \
     Aplicativo/Cinema.h \
+    Aplicativo/LogicaCinema.h \
     ManejoBaseDeDatos/BaseDeDatos.h \
     ManejoBaseDeDatos/Codificador.h \
     ManejoBaseDeDatos/ManejoArchivos.h

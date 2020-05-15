@@ -228,7 +228,6 @@ void Cinema::cambiarFuncion()
 {
     int funcion;
     string nombrePelicula;
-    string sala_hora;
     string sala;
     string hora;
     string duracion;
@@ -250,8 +249,7 @@ void Cinema::cambiarFuncion()
     cin >> hora;
     cout << "Ingrese duracion: ";
     cin >> duracion;
-    sala_hora = sala + "-" + hora;
-    logica.modificarCartelera(funcion,nombrePelicula,sala_hora,duracion);
+    logica.modificarCartelera(funcion,nombrePelicula,sala,hora,duracion);
     cout << "Cambio Exitoso!!";
     verCartelera();
 }
@@ -280,7 +278,41 @@ void Cinema::verCartelera()
 
 void Cinema::verSalaParaFuncion(int idFuncion)
 {
-    cout << "sala de funcion" << endl;
+    cout << endl;
+    cout << "\t\t Estado Sala " << endl;
+    cout << endl;
+    SalaDTO sala = logica.consultarSala(idFuncion);
+    cout << "+ Asiento Libre." << endl;
+    cout << "- Asiento Ocupado." << endl;
+    cout << "--------------------------------Asientos VibroSound-------------------------" << endl;
+    map<char,array<bool,20>> acientos = sala.getAcientos();
+    for(int i=0; i<8; i++){
+        char key = 'H' - i;
+        if(key=='E'){
+            cout << "--------------------------------Asientos Generales--------------------------" << endl;
+        }
+        cout << key << "    ";
+        for(int j=0; j<20; j++){
+            if(j==4 || j==16){
+                cout << "\t";
+            }
+            if(acientos[key].at(j)){
+                ingresarBloque("+",3);
+            }else{
+                ingresarBloque("-",3);
+            }
+        }
+        cout << endl;
+    }
+    cout << "     ";
+    for(int i=1; i<21; i++){
+        if(i==5 || i==17){
+            cout << "\t";
+        }
+        ingresarBloque(to_string(i),3);
+    }
+    cout << endl;
+    cout << "----------------------------------------------------------------------------" << endl;
 }
 
 void Cinema::limpiarTerminal()

@@ -50,7 +50,7 @@ map<string, int> LogicaCinema::informeVentas(string dia)
     return ventas;
 }
 
-void LogicaCinema::modificarCartelera(int id, string nombrePelicula, string sala_hora, string duracion)
+void LogicaCinema::modificarCartelera(int id, string nombrePelicula, string sala, string hora, string duracion)
 {
 
 }
@@ -67,4 +67,11 @@ list<FuncionCarteleraDTO> LogicaCinema::solictarCartelera()
         cartelera.push_back(funcion);
     }
     return cartelera;
+}
+
+SalaDTO LogicaCinema::consultarSala(int funcion)
+{
+    SalaDTO sala;
+    sala.setIdFuncion(funcion);
+    return sala;
 }

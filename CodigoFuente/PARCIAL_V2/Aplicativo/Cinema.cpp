@@ -99,7 +99,8 @@ void Cinema::rutinaUsuario(string nombre)
         cin >> basura;
         return;
     }
-    cout << "Compra de asiento " << fila << silla << " fue un Exito!";
+    cout << endl;
+    cout << "Compra de asiento " << fila << silla << " fue un Exito!"<< endl;
     cout << "Ingrese cualquier caracter y enter para continuar." << endl;
     cin >> basura;
 }
@@ -157,12 +158,12 @@ void Cinema::cambiarFuncion()
 
 void Cinema::verCartelera()
 {
-
+    cout << "ver Cartelera" << endl;
 }
 
 void Cinema::verSalaParaFuncion(int idFuncion)
 {
-
+    cout << "sala de funcion" << endl;
 }
 
 void Cinema::limpiarTerminal()

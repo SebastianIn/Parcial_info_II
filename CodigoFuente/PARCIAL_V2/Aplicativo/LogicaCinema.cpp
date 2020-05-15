@@ -17,10 +17,10 @@ bool LogicaCinema::esAdmin(string nombre)
 
 bool LogicaCinema::validarAciento(char fila, int silla)
 {
-
+    return true;
 }
 
 bool LogicaCinema::comprarAsiento(char fila, int silla)
 {
-
+    return true;
 }
